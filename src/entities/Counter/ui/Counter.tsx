@@ -1,33 +1,37 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Button } from "shared/ui/Button/Button";
-import { counterAction } from "../model/slice/CounterSlice";
-import { getCounterValue } from "../model/selector/getCounterValue/getCounterValue";
+import { Button } from 'shared/ui/Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { counterActions } from '../model/slice/counterSlice';
+import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
-const Counter = () => {
-  const dispatch = useDispatch();
+export const Counter = () => {
+    const dispatch = useDispatch();
+    const counterValue = useSelector(getCounterValue);
+    const { t } = useTranslation();
 
-  const selecterCounter = useSelector(getCounterValue);
+    const increment = () => {
+        dispatch(counterActions.increment());
+    };
 
-  const increment = () => {
-    dispatch(counterAction.increment());
-  };
+    const decrement = () => {
+        dispatch(counterActions.decrement());
+    };
 
-  const decrement = () => {
-    dispatch(counterAction.decrement());
-  };
-
-  return (
-    <>
-      <div data-testid="valueCounter">{selecterCounter}</div>
-      <Button onClick={increment} data-testid="increment-btn">
-        Increment
-      </Button>
-      <Button onClick={decrement} data-testid="decrement-btn">
-        decrement
-      </Button>
-    </>
-  );
+    return (
+        <div>
+            <h1 data-testid="value-title">{counterValue}</h1>
+            <Button
+                onClick={increment}
+                data-testid="increment-btn"
+            >
+                {t('increment')}
+            </Button>
+            <Button
+                data-testid="decrement-btn"
+                onClick={decrement}
+            >
+                {t('decrement')}
+            </Button>
+        </div>
+    );
 };
-
-export default Counter;

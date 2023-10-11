@@ -1,5 +1,5 @@
-import { counterReducer } from "./madel/slice/CounterSlice";
-import { CounterType } from "./madel/type/CounterType";
+import { counterReducer } from "./model/slice/CounterSlice";
+import { CounterType } from "./model/type/CounterType";
 import Counter from "./ui/Counter";
 
-export { CounterType,counterReducer,Counter };
+export { CounterType, counterReducer, Counter };

@@ -8,16 +8,16 @@ import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import cls from './ProfileCard.module.scss';
+import { Profile } from 'entities/Profile';
 
 interface ProfileCardProps {
     className?: string;
+    data?:Profile,
 }
 
-export const ProfileCard = ({ className }: ProfileCardProps) => {
+export const ProfileCard = ({ className ,data}: ProfileCardProps) => {
     const { t } = useTranslation('profile');
-    const data = useSelector(getProfileData);
-    const isLoading = useSelector(getProfileIsLoading);
-    const error = useSelector(getProfileError);
+    
 
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>

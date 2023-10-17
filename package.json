@@ -68,7 +68,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "json-server": "^0.17.0",
-    "loki": "^0.28.1",
     "mini-css-extract-plugin": "^2.5.3",
     "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
@@ -98,15 +97,26 @@
     "react-router-dom": "^6.2.1"
   },
   "loki": {
+    "chromeSelector": "#my-decorator > *",
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.docker",
+        "target": "chrome.app",
         "width": 1366,
         "height": 768
       },
       "chrome.iphone7": {
         "target": "chrome.docker",
         "preset": "iPhone 7"
+      },
+      "chrome.a4": {
+        "target": "chrome.aws-lambda",
+        "preset": "A4 Paper"
+      },
+      "ios": {
+        "target": "ios.simulator"
+      },
+      "android": {
+        "target": "android.emulator"
       }
     }
   }

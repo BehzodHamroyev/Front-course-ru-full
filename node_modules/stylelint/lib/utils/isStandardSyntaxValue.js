@@ -8,11 +8,11 @@ const hasInterpolation = require('../utils/hasInterpolation');
  * @param {string} value
  * @returns {boolean}
  */
-module.exports = function (value) {
+module.exports = function isStandardSyntaxValue(value) {
 	let normalizedValue = value;
 
 	// Ignore operators before variables (example -$variable)
-	if (/^[-+*/]/.test(value[0])) {
+	if (/^[-+*/]/.test(value.charAt(0))) {
 		normalizedValue = normalizedValue.slice(1);
 	}
 

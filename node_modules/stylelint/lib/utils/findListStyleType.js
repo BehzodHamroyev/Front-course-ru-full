@@ -2,7 +2,11 @@
 
 const isStandardSyntaxValue = require('./isStandardSyntaxValue');
 const isVariable = require('./isVariable');
-const keywordSets = require('../reference/keywordSets');
+const {
+	listStyleImageKeywords,
+	listStylePositionKeywords,
+	listStyleTypeKeywords,
+} = require('../reference/keywords');
 const postcssValueParser = require('postcss-value-parser');
 
 /**
@@ -15,13 +19,11 @@ module.exports = function findListStyleType(value) {
 	const listStyleTypes = [];
 
 	const valueNodes = postcssValueParser(value);
+	const { nodes } = valueNodes;
 
 	// Handle `inherit`, `initial` and etc
-	if (
-		valueNodes.nodes.length === 1 &&
-		keywordSets.listStyleTypeKeywords.has(valueNodes.nodes[0].value.toLowerCase())
-	) {
-		return [valueNodes.nodes[0]];
+	if (nodes.length === 1 && nodes[0] && listStyleTypeKeywords.has(nodes[0].value.toLowerCase())) {
+		return [nodes[0]];
 	}
 
 	valueNodes.walk((valueNode) => {
@@ -47,8 +49,8 @@ module.exports = function findListStyleType(value) {
 
 		// Ignore keywords for other font parts
 		if (
-			keywordSets.listStylePositionKeywords.has(valueLowerCase) ||
-			keywordSets.listStyleImageKeywords.has(valueLowerCase)
+			listStylePositionKeywords.has(valueLowerCase) ||
+			listStyleImageKeywords.has(valueLowerCase)
 		) {
 			return;
 		}

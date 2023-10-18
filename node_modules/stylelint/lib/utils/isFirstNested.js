@@ -6,7 +6,7 @@ const { isComment, hasSource } = require('./typeGuards');
  * @param {import('postcss').Node} statement
  * @returns {boolean}
  */
-module.exports = function (statement) {
+module.exports = function isFirstNested(statement) {
 	const parentNode = statement.parent;
 
 	if (parentNode === undefined || parentNode.type === 'root') {
@@ -30,6 +30,10 @@ module.exports = function (statement) {
 
 	const firstNode = parentNodes[0];
 
+	if (!firstNode) {
+		return false;
+	}
+
 	if (
 		!isComment(firstNode) ||
 		(typeof firstNode.raws.before === 'string' && firstNode.raws.before.includes('\n'))
@@ -47,8 +51,10 @@ module.exports = function (statement) {
 		return false;
 	}
 
-	for (let i = 1; i < parentNodes.length; i++) {
-		const node = parentNodes[i];
+	for (const [index, node] of parentNodes.entries()) {
+		if (index === 0) {
+			continue;
+		}
 
 		if (node === statement) {
 			return true;

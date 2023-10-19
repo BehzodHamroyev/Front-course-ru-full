@@ -13,15 +13,15 @@ import {
   profileActions,
   ProfileCard,
   profileReducer
-} from 'entities/Profile';
+} from 'myEntities/Profile';
 import React, { useCallback, useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { type Currency } from 'entities/Currency';
-import { type Country } from 'entities/Country';
+import { type Currency } from 'myEntities/Currency';
+import { type Country } from 'myEntities/Country';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { ValidateProfileError } from 'entities/Profile/model/types/profile';
+import { ValidateProfileError } from 'myEntities/Profile/model/types/profile';
 const reducers: ReducersList = {
   profile: profileReducer
 };

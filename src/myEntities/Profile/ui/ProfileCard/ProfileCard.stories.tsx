@@ -4,6 +4,7 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { Country } from 'myEntities/Country';
 import Avatar from 'shared/assets/test/storybook.jpg';
+import { Currency } from 'myEntities/Currency';
 export default {
   title: 'entities/ProfileCard',
   component: ProfileCard,
@@ -22,6 +23,7 @@ Primary.args = {
     username: 'Behzod',
     lastname: 'hamroyev',
     country: Country.Armenia,
+    currency:Currency.EUR,  
     age: 23,
     city: 'firs',
     first: 'sklsd',

@@ -37,7 +37,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
   const error = useSelector(getProfileError);
   const readonly = useSelector(getProfileReadonly);
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if(__PROJECT__ !=='storybook'){
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   const validateErrorTranslationList = {

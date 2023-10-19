@@ -8,29 +8,29 @@ import { getUserAuthData, userActions } from 'entities/User';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
-    className?: string;
+  className?: string
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-    const { t } = useTranslation();
-    const [isAuthModal, setIsAuthModal] = useState(false);
-    const authData = useSelector(getUserAuthData);
-    const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const [isAuthModal, setIsAuthModal] = useState(false);
+  const authData = useSelector(getUserAuthData);
+  const dispatch = useDispatch();
 
-    const onCloseModal = useCallback(() => {
-        setIsAuthModal(false);
-    }, []);
+  const onCloseModal = useCallback(() => {
+    setIsAuthModal(false);
+  }, []);
 
-    const onShowModal = useCallback(() => {
-        setIsAuthModal(true);
-    }, []);
+  const onShowModal = useCallback(() => {
+    setIsAuthModal(true);
+  }, []);
 
-    const onLogout = useCallback(() => {
-        dispatch(userActions.logout());
-    }, [dispatch]);
+  const onLogout = useCallback(() => {
+    dispatch(userActions.logout());
+  }, [dispatch]);
 
-    if (authData) {
-        return (
+  if (authData) {
+    return (
             <div className={classNames(cls.Navbar, {}, [className])}>
                 <Button
                     theme={ButtonTheme.CLEAR_INVERTED}
@@ -40,10 +40,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     {t('Выйти')}
                 </Button>
             </div>
-        );
-    }
+    );
+  }
 
-    return (
+  return (
         <div className={classNames(cls.Navbar, {}, [className])}>
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
@@ -59,5 +59,5 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 />
             )}
         </div>
-    );
+  );
 });

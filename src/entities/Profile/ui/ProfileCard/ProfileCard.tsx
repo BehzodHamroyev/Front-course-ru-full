@@ -1,60 +1,60 @@
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, type Mods } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Currency } from 'entities/Currency/model/types/currency';
+import { type Currency } from 'entities/Currency/model/types/currency';
 import { CurrencySelect } from 'entities/Currency';
-import { Country } from 'entities/Country/model/types/country';
+import { type Country } from 'entities/Country/model/types/country';
 import { CountrySelect } from 'entities/Country';
 import cls from './ProfileCard.module.scss';
-import { Profile } from '../../model/types/profile';
-
+import { type Profile } from '../../model/types/profile';
+import React from 'react';
 interface ProfileCardProps {
-    className?: string;
-    data?: Profile;
-    error?: string;
-    isLoading?: boolean;
-    readonly?: boolean;
-    onChangeLastname?: (value?: string) => void;
-    onChangeFirstname?: (value?: string) => void;
-    onChangeCity?: (value?: string) => void;
-    onChangeAge?: (value?: string) => void;
-    onChangeUsername?: (value?: string) => void;
-    onChangeAvatar?: (value?: string) => void;
-    onChangeCurrency?: (currency: Currency) => void;
-    onChangeCountry?: (country: Country) => void;
+  className?: string
+  data?: Profile
+  error?: string
+  isLoading?: boolean
+  readonly?: boolean
+  onChangeLastname?: (value?: string) => void
+  onChangeFirstname?: (value?: string) => void
+  onChangeCity?: (value?: string) => void
+  onChangeAge?: (value?: string) => void
+  onChangeUsername?: (value?: string) => void
+  onChangeAvatar?: (value?: string) => void
+  onChangeCurrency?: (currency: Currency) => void
+  onChangeCountry?: (country: Country) => void
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
-    const {
-        className,
-        data,
-        isLoading,
-        error,
-        readonly,
-        onChangeFirstname,
-        onChangeLastname,
-        onChangeAge,
-        onChangeCity,
-        onChangeAvatar,
-        onChangeUsername,
-        onChangeCountry,
-        onChangeCurrency,
-    } = props;
-    const { t } = useTranslation('profile');
+  const {
+    className,
+    data,
+    isLoading,
+    error,
+    readonly,
+    onChangeFirstname,
+    onChangeLastname,
+    onChangeAge,
+    onChangeCity,
+    onChangeAvatar,
+    onChangeUsername,
+    onChangeCountry,
+    onChangeCurrency
+  } = props;
+  const { t } = useTranslation('profile');
 
-    if (isLoading) {
-        return (
+  if (isLoading) {
+    return (
             <div className={classNames(cls.ProfileCard, { [cls.loading]: true }, [className])}>
                 <Loader />
             </div>
-        );
-    }
+    );
+  }
 
-    if (error) {
-        return (
+  if (error) {
+    return (
             <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
                 <Text
                     theme={TextTheme.ERROR}
@@ -63,14 +63,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     align={TextAlign.CENTER}
                 />
             </div>
-        );
-    }
+    );
+  }
 
-    const mods: Mods = {
-        [cls.editing]: !readonly,
-    };
+  const mods: Mods = {
+    [cls.editing]: !readonly
+  };
 
-    return (
+  return (
         <div className={classNames(cls.ProfileCard, mods, [className])}>
             <div className={cls.data}>
                 {data?.avatar && (
@@ -134,5 +134,5 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 />
             </div>
         </div>
-    );
+  );
 };

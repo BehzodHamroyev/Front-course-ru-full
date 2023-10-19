@@ -1,4 +1,4 @@
-import { Profile, ValidateProfileError } from "../../types/profile";
+import { type Profile, ValidateProfileError } from '../../types/profile';
 
 export const validateProfileData = (profile?: Profile) => {
   const errors: ValidateProfileError[] = [];
@@ -9,7 +9,7 @@ export const validateProfileData = (profile?: Profile) => {
     errors.push(ValidateProfileError.INCORRECT_USER_DATA);
   }
 
-  if (!profile?.country) {
+  if ((profile?.country) == null) {
     errors.push(ValidateProfileError.INCORRECT_COUNTRY);
   }
 

@@ -6,17 +6,17 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 
 const AppRouter = () => {
-    const isAuth = useSelector(getUserAuthData);
+  const isAuth = useSelector(getUserAuthData);
 
-    const routes = useMemo(() => Object.values(routeConfig).filter((route) => {
-        if (route.authOnly && !isAuth) {
-            return false;
-        }
+  const routes = useMemo(() => Object.values(routeConfig).filter((route) => {
+    if (route.authOnly && !isAuth) {
+      return false;
+    }
 
-        return true;
-    }), [isAuth]);
+    return true;
+  }), [isAuth]);
 
-    return (
+  return (
         <Routes>
             {routes.map(({ element, path }) => (
                 <Route
@@ -32,7 +32,7 @@ const AppRouter = () => {
                 />
             ))}
         </Routes>
-    );
+  );
 };
 
 export default memo(AppRouter);

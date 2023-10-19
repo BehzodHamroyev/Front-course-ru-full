@@ -1,9 +1,8 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import { useTranslation } from "react-i18next";
+import { classNames } from 'shared/lib/classNames/classNames';
 import {
   DynamicModuleLoader,
-  ReducersList,
-} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+  type ReducersList
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
   fetchProfileData,
   getProfileError,
@@ -13,26 +12,25 @@ import {
   getProfileValidateError,
   profileActions,
   ProfileCard,
-  profileReducer,
-} from "entities/Profile";
-import { useCallback, useEffect } from "react";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useSelector } from "react-redux";
-import { Currency } from "entities/Currency";
-import { Country } from "entities/Country";
-import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
-import { Text, TextTheme } from "shared/ui/Text/Text";
-import { ValidateProfileError } from "entities/Profile/model/types/profile";
+  profileReducer
+} from 'entities/Profile';
+import React, { useCallback, useEffect } from 'react';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { type Currency } from 'entities/Currency';
+import { type Country } from 'entities/Country';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 const reducers: ReducersList = {
-  profile: profileReducer,
+  profile: profileReducer
 };
 
 interface ProfilePageProps {
-  className?: string;
+  className?: string
 }
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const formData = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileIsLoading);
@@ -47,27 +45,27 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
       "Yosh haqidagi ma'lumot notogri kiritildi",
     [ValidateProfileError.INCORRECT_USER_DATA]:
       "User ma'lumotlarini kiritishda xatolikka berdi",
-    [ValidateProfileError.INCORRECT_COUNTRY]: "davlat tanlanmadi",
+    [ValidateProfileError.INCORRECT_COUNTRY]: 'davlat tanlanmadi'
   };
   const getSelectorProfileErrors = useSelector(getProfileValidateError);
 
   const onChangeFirstname = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ first: value || "" }));
+      dispatch(profileActions.updateProfile({ first: value || '' }));
     },
     [dispatch]
   );
 
   const onChangeLastname = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ lastname: value || "" }));
+      dispatch(profileActions.updateProfile({ lastname: value || '' }));
     },
     [dispatch]
   );
 
   const onChangeCity = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ city: value || "" }));
+      dispatch(profileActions.updateProfile({ city: value || '' }));
     },
     [dispatch]
   );
@@ -81,14 +79,14 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
   const onChangeUsername = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ username: value || "" }));
+      dispatch(profileActions.updateProfile({ username: value || '' }));
     },
     [dispatch]
   );
 
   const onChangeAvatar = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ avatar: value || "" }));
+      dispatch(profileActions.updateProfile({ avatar: value || '' }));
     },
     [dispatch]
   );
@@ -109,19 +107,20 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames("", {}, [className])}>
+      <div className={classNames('', {}, [className])}>
         <ProfilePageHeader />
         {getSelectorProfileErrors?.length
           ? getSelectorProfileErrors?.map((err) => {
-              return (
+            return (
                 <Text
                   theme={TextTheme.ERROR}
-                  //@ts-ignore
+                  key={err}
+                  // @ts-expect-error
                   text={`${validateErrorTranslationList[err]}`}
                 />
-              );
-            })
-          : ""}
+            );
+          })
+          : ''}
         <ProfileCard
           data={formData}
           isLoading={isLoading}

@@ -15,8 +15,8 @@ import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLogi
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsernames';
-import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
+import { loginActions, loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 export interface LoginFormProps {
   className?: string
   onSuccess: () => void

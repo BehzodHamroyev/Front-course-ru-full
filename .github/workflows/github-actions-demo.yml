@@ -1,8 +1,5 @@
-# Name your workflow
 name: CI
 
-# Set on which events you want run the actions.
-# In this case the workflow will run on push for master and on pull request for master and develop branches
 on:
   push:
     branches: [master]
@@ -10,16 +7,13 @@ on:
     branches: [master, develop]
 
 jobs:
-  # This workflow contains a job called "integration"
   integration:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         node: [12]
-    # The runners that the job will run on
     runs-on: ${{ matrix.os }}
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Setup Node.js environment
         uses: actions/setup-node@v1.4.3

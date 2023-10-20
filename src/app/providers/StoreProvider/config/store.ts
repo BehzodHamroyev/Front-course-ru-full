@@ -5,8 +5,8 @@ import { $api } from 'shared/api/api';
 import { type NavigateOptions } from 'react-router';
 import { type CombinedState, type Reducer } from 'redux';
 import { type StateSchema, type ThunkExtraArg } from './StateSchema';
-import { createReducerManager } from './reducerManager';
 import { To } from 'react-router-dom';
+import { createReducerManager } from './reducerManager';
 
 export function createReduxStore (
   initialState?: StateSchema,

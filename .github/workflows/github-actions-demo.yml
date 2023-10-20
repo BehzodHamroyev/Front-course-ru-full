@@ -19,20 +19,20 @@ jobs:
           node-version: 18 # You can specify the Node.js version you need
       - name: Install modules
         run: npm install
-      # - name: Build production project
-      #   run: npm run build:prod
+      - name: Build production project
+        run: npm run build:prod
 
-      # - name: Linting TypeScript
-      #   run: npm run lint:ts
+      - name: Linting TypeScript
+        run: npm run lint:ts
 
-      # - name: Linting CSS
-      #   run: npm run lint:scss
+      - name: Linting CSS
+        run: npm run lint:scss
 
-      # - name: Unit Testing
-      #   run: npm run test:unit
+      - name: Unit Testing
+        run: npm run test:unit
 
       - name: Build Storybook
         run: npm run storybook:build
 
-      - name: Screenshot Testing
-        run: npm run test:ui:ci
+      # - name: Screenshot Testing
+      #   run: npm run test:ui:ci

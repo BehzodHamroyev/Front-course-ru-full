@@ -6,7 +6,7 @@ import { type NavigateOptions } from 'react-router';
 import { type CombinedState, type Reducer } from 'redux';
 import { type StateSchema, type ThunkExtraArg } from './StateSchema';
 import { To } from 'react-router-dom';
-import { createReducerManager } from './reducerManager';
+import  createReducerManager  from './reducerManager';
 
 export function createReduxStore (
   initialState?: StateSchema,

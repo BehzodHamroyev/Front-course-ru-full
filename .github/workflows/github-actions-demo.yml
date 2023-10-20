@@ -1,25 +1,40 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main # Replace with the branch you want to trigger this workflow on
+
 jobs:
-  Explore-GitHub-Actions:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - name: install modules
-        run: | 
-          npm install 
-      - name: build production project
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18 # You can specify the Node.js version you need
+
+      - name: Install modules
+        run: npm install
+
+      - name: Build production project
         run: npm run build:prod
-      - name: linting typescript
+
+      - name: Linting TypeScript
         run: npm run lint:ts
-      - name: linting css
+
+      - name: Linting CSS
         run: npm run lint:scss
-      - name: unit testing
+
+      - name: Unit Testing
         run: npm run test:unit
-      - name: build storybook
+
+      - name: Build Storybook
         run: npm run storybook:build
-      - name: screenshot testing
+
+      - name: Screenshot Testing
         run: npm run test:ui:ci

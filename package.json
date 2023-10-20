@@ -107,6 +107,9 @@
     "stylelint-config-standard-scss": "^11.0.0"
   },
   "loki": {
+    "looks-same": {
+      "ignoreCaret": true
+    },
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.docker",

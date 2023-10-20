@@ -19,8 +19,8 @@ jobs:
           node-version: 18 # You can specify the Node.js version you need
       - name: Install modules
         run: npm install
-      - name: Build production project
-        run: npm run build:prod
+      # - name: Build production project
+      #   run: npm run build:prod
 
       - name: Linting TypeScript
         run: npm run lint:ts

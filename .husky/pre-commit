@@ -3,6 +3,7 @@
 
 npm install
 npm run build:prod
+npm run lint:ts
 # npm run lint:scss
 npm run test:unit
 npm run storybook:build

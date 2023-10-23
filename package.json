@@ -118,14 +118,5 @@
         "preset": "iPhone 7"
       }
     }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": "eslint",
-    "*.{json,md}": "prettier --write"
   }
 }

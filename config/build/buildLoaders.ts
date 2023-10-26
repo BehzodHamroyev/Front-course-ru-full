@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { BuildOptions } from './types/config';
-import { BuildBabelLoader } from './loaders/buildBabelLoader';
 
 export function buildLoaders(option: BuildOptions): webpack.RuleSetRule[] {
     const { isDev } = option
@@ -10,7 +9,27 @@ export function buildLoaders(option: BuildOptions): webpack.RuleSetRule[] {
         use: ['@svgr/webpack'],
     };
 
-    const babelLoader = BuildBabelLoader(option)
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    [
+                        'i18next-extract',
+                        {
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true,
+                        },
+                    ],
+                    option.isDev && require.resolve('react-refresh/babel')
+                ].filter(Boolean),
+
+            },
+        },
+    };
 
     const cssLoader = buildCssLoader(isDev);
 

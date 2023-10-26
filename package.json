@@ -75,6 +75,7 @@
     "jest": "^27.5.1",
     "json-server": "^0.17.0",
     "mini-css-extract-plugin": "^2.5.3",
+    "react-refresh": "^0.14.0",
     "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.49.9",
@@ -103,6 +104,7 @@
     "react-dom": "^17.0.2",
     "react-i18next": "^11.15.5",
     "react-redux": "^7.2.6",
+    "react-refresh-webpack-plugin": "^0.1.0",
     "react-router-dom": "^6.17.0",
     "storybook": "^7.5.0",
     "stylelint-config-standard-scss": "^11.0.0"

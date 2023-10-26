@@ -1,11 +1,10 @@
-//@ts-ignore
-import { ReactRefreshWebpackPlugin } from 'pmmmwh/react-refresh-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BuildOptions } from "./types/config";
 //@ts-ignore
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 export function buildPlugins({
   paths,
@@ -30,7 +29,7 @@ export function buildPlugins({
   ];
 
   if (isDev) {
-    plugins.push(new ReactRefreshWebpackPlugin())
+    plugins.push(new ReactRefreshPlugin())
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(
       new BundleAnalyzerPlugin({

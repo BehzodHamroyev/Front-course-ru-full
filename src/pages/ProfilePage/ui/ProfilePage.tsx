@@ -45,10 +45,12 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
     };
 
+    // console.log(__PROJECT__, 'project');
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
+
+        // if (__PROJECT__ !== 'storybook') {
+        dispatch(fetchProfileData());
+        // }
     }, [dispatch]);
 
     const onChangeFirstname = useCallback((value?: string) => {

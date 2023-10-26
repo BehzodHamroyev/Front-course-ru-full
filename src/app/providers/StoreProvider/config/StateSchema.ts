@@ -7,9 +7,10 @@ import {
 import { CombinedState } from 'redux';
 import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
+import { To } from 'react-router';
 import { NavigateOptions } from 'react-router';
 import { ArticleDetailsSchema } from 'entities/Article';
-import { To } from 'react-router-dom';
+import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -19,6 +20,7 @@ export interface StateSchema {
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
+    articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

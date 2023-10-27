@@ -10,7 +10,8 @@ import { getUserInited, userActions } from 'entities/User';
 function App() {
     const { theme } = useTheme();
     const dispatch = useDispatch();
-    const init = useSelector(getUserInited)
+    const inited = useSelector(getUserInited);
+
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
@@ -21,7 +22,7 @@ function App() {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    {init && <AppRouter />}
+                    {inited && <AppRouter />}
                 </div>
             </Suspense>
         </div>

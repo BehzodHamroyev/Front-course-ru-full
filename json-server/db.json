@@ -14,11 +14,11 @@
   "articles": [
     {
       "id": "1",
-      "title": "Javascript news",
+      "title": "Javascript news СВЕЖАЯ",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.04.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -88,8 +88,8 @@
       "id": "2",
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://img-b.udemycdn.com/course/750x422/919038_3ae1_11.jpg",
-      "views": 1022,
+      "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
+      "views": 5204,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -110,11 +110,11 @@
     },
     {
       "id": "3",
-      "title": "Kotlin news",
+      "title": "Kotlin news 2019",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 94002,
+      "createdAt": "26.02.2019",
       "userId": "1",
       "type": [
         "IT"
@@ -134,11 +134,11 @@
     },
     {
       "id": "4",
-      "title": "Python news",
+      "title": "Scala news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://img-b.udemycdn.com/course/750x422/919038_3ae1_11.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://coursefreedl.com/wp-content/uploads/2020/01/Scala-Zero-To-Hero-Complete-Guide.jpg",
+      "views": 10222,
+      "createdAt": "24.01.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -158,11 +158,11 @@
     },
     {
       "id": "5",
-      "title": "Kotlin news",
+      "title": "Golang news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://cdn-front.kwork.ru/pics/t3/88/16350941-1630390388.jpg",
+      "views": 10222,
+      "createdAt": "26.02.2020",
       "userId": "1",
       "type": [
         "IT"
@@ -182,9 +182,9 @@
     },
     {
       "id": "6",
-      "title": "Python news",
+      "title": "Java news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://img-b.udemycdn.com/course/750x422/919038_3ae1_11.jpg",
+      "img": "https://andreyex.ru/wp-content/uploads/2018/05/Kak-ustanovit-Java-s-apt-na-Ubuntu-18.04.jpg",
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
@@ -206,11 +206,11 @@
     },
     {
       "id": "7",
-      "title": "Kotlin news",
+      "title": "Ruby news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://res.cloudinary.com/practicaldev/image/fetch/s--oqV3akcU--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/pgnw91fs7tpxn0wyeqh2.jpg",
+      "views": 100,
+      "createdAt": "21.02.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -230,10 +230,10 @@
     },
     {
       "id": "8",
-      "title": "Python news",
+      "title": "TypeScript news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://img-b.udemycdn.com/course/750x422/919038_3ae1_11.jpg",
-      "views": 1022,
+      "img": "https://miro.medium.com/max/1400/1*aTCN2ctKNoZupUCMP0hQuw.png",
+      "views": 102222,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -280,7 +280,7 @@
       "id": "10",
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://img-b.udemycdn.com/course/750x422/919038_3ae1_11.jpg",
+      "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
@@ -328,7 +328,7 @@
       "id": "12",
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://img-b.udemycdn.com/course/750x422/919038_3ae1_11.jpg",
+      "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
@@ -376,7 +376,7 @@
       "id": "14",
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://img-b.udemycdn.com/course/750x422/919038_3ae1_11.jpg",
+      "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
@@ -424,7 +424,7 @@
       "id": "16",
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://img-b.udemycdn.com/course/750x422/919038_3ae1_11.jpg",
+      "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
@@ -454,6 +454,54 @@
       "userId": "1",
       "type": [
         "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": "Заголовок этого блока",
+          "paragraphs": [
+            "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.",
+            "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.",
+            "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Экономическая статья - ИНФЛЯЦИЯ!",
+      "subtitle": "Экономика",
+      "img": "data:image/jpeg;base64,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",
+      "views": 1022,
+      "createdAt": "26.02.2022",
+      "userId": "1",
+      "type": [
+        "ECONOMICS"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": "Заголовок этого блока",
+          "paragraphs": [
+            "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.",
+            "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.",
+            "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Научная статья - Биология",
+      "subtitle": "БиологиЯ",
+      "img": "https://avatars.mds.yandex.net/get-zen_doc/2746556/pub_5f50dd7e1a1ddf4776aa5569_5f50decd2506f211d1de6284/scale_1200",
+      "views": 1022,
+      "createdAt": "26.02.2022",
+      "userId": "1",
+      "type": [
+        "SCIENCE"
       ],
       "blocks": [
         {
@@ -547,6 +595,12 @@
       "userId": "1",
       "text": "python!!!",
       "id": "p5rMadd"
+    },
+    {
+      "articleId": "4",
+      "userId": "2",
+      "text": "salom salom",
+      "id": "JxW3PTv"
     }
   ],
   "users": [

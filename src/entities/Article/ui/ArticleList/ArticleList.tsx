@@ -51,25 +51,14 @@ export const ArticleList = memo((props: ArticleListProps) => {
     }
 
     return (
-        <AutoSizer>
-            {({ height, width }) => (
-                <List
-                    height={500}
-                    rowCount={articles.length}
-                    rowHeight={500}
-                    rowRenderer={() => <div>row</div>}
-                    width={width}
-                />
-            )}
-        </AutoSizer>
+        <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+            {articles.length > 0
+                ? articles.map(renderArticle)
+                : null}
+            {isLoading && getSkeletons(view)}
+        </div>
 
     );
 });
 
 
-{/* <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-{articles.length > 0
-    ? articles.map(renderArticle)
-    : null}
-{isLoading && getSkeletons(view)}
-</div> */}

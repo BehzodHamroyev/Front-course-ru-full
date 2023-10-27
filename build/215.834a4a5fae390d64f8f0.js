@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkproduction_project=self.webpackChunkproduction_project||[]).push([[215],{4215:(e,c,r)=>{r.r(c),r.d(c,{default:()=>n});var s=r(5893),t=r(4611),a=r(5443),o=r(7294);var u=function(e){var c=e.className;return(0,a.$)().t,(0,s.jsx)("div",{className:(0,t.A)("i0h17Gqm",{},[c])})};const n=(0,o.memo)(u)}}]);

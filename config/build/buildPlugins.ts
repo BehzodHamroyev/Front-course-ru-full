@@ -5,7 +5,7 @@ import { BuildOptions } from "./types/config";
 //@ts-ignore
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-
+import CopyPlugin from 'copy-webpack-plugin'
 export function buildPlugins({
   paths,
   isDev,
@@ -27,6 +27,14 @@ export function buildPlugins({
       __API__: JSON.stringify(apiUrl),
       __PROJECT__: JSON.stringify(project),
     }),
+
+    new CopyPlugin({
+      patterns: [
+        {
+          from: paths.locales, to: paths.buildLocales,
+        }
+      ]
+    })
   ];
 
   if (isDev) {

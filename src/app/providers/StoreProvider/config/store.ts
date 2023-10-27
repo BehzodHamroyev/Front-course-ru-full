@@ -5,7 +5,7 @@ import { $api } from 'shared/api/api';
 import { CombinedState, Reducer } from 'redux';
 import { uiReducer } from 'features/UI';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
-import { createReducerManager } from './reducerManager';
+import { createReducerManager } from './ReducerManager';
 
 export function createReduxStore(
     initialState?: StateSchema,

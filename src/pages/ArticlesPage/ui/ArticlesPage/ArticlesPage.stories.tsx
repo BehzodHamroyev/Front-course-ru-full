@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import ArticlesPage from './ArticlesPage';
 
 export default {

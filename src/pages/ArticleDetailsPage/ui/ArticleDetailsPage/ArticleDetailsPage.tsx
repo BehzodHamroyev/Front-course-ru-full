@@ -12,6 +12,7 @@ import { AddCommentForm } from 'features/addCommentForm';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/Page';
+import { VStack } from 'shared/Stack';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import cls from './ArticleDetailsPage.module.scss';
@@ -27,7 +28,6 @@ import {
 } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import { VStack } from 'shared/Stack';
 
 interface ArticleDetailsPageProps {
     className?: string;

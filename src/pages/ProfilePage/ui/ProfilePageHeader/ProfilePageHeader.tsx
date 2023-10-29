@@ -11,6 +11,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
 import { HStack } from 'shared/Stack';
 
+
+
 interface ProfilePageHeaderProps {
     className?: string;
 }

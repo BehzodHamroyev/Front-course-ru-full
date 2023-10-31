@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
 import { HStack } from 'shared/Stack';
-import { ListBox } from 'shared/ui/ListBox/ListBox';
 import { Page } from 'widgets/Page/Page';
 
 const MainPage = () => {

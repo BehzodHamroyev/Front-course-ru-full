@@ -1,7 +1,7 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { Popover as HPopover } from '@headlessui/react';
-import { DropdownDirection } from '@/shared/types/ui';
 import { ReactNode } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DropdownDirection } from '@/shared/types/ui';
 import { mapDirectionClass } from '../../styles/consts';
 import cls from './Popover.module.scss';
 import popupCls from '../../styles/popup.module.scss';
@@ -24,7 +24,10 @@ export function Popover(props: PopoverProps) {
         <HPopover
             className={classNames(cls.Popover, {}, [className, popupCls.popup])}
         >
-            <HPopover.Button className={popupCls.trigger}>
+            <HPopover.Button
+                as="div"
+                className={popupCls.trigger}
+            >
                 {trigger}
             </HPopover.Button>
 

@@ -108,6 +108,7 @@
     "@types/circular-dependency-plugin": "^5.0.7",
     "@types/react-virtualized": "^9.21.26",
     "@types/ws": "^8.5.8",
+    "@use-gesture/react": "^10.3.0",
     "axios": "^0.26.1",
     "circular-dependency-plugin": "^5.2.2",
     "i18next": "^21.6.11",
@@ -122,6 +123,7 @@
     "react-redux": "^7.2.6",
     "react-refresh-webpack-plugin": "^0.1.0",
     "react-router-dom": "^6.17.0",
+    "react-spring": "^9.7.3",
     "react-virtualized": "^9.22.5",
     "storybook": "^7.5.2",
     "stylelint-config-standard-scss": "^11.0.0"

@@ -1,7 +1,7 @@
 import { Menu } from '@headlessui/react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Fragment, ReactNode } from 'react';
-import { DropdownDirection } from 'shared/types/ui';
+import { DropdownDirection } from '@/shared/types/ui';
 import { AppLink } from '../AppLink/AppLink';
 import cls from './Dropdown.module.scss';
 
@@ -40,7 +40,7 @@ export function Dropdown(props: DropdownProps) {
             </Menu.Button>
             <Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
                 {items.map((item) => {
-                    const content = ({ active }: {active: boolean}) => (
+                    const content = ({ active }: { active: boolean }) => (
                         <button
                             type="button"
                             disabled={item.disabled}
@@ -53,6 +53,7 @@ export function Dropdown(props: DropdownProps) {
 
                     if (item.href) {
                         return (
+                            // eslint-disable-next-line react/jsx-key
                             <Menu.Item as={AppLink} to={item.href} disabled={item.disabled}>
                                 {content}
                             </Menu.Item>
@@ -60,6 +61,7 @@ export function Dropdown(props: DropdownProps) {
                     }
 
                     return (
+                        // eslint-disable-next-line react/jsx-key
                         <Menu.Item as={Fragment} disabled={item.disabled}>
                             {content}
                         </Menu.Item>

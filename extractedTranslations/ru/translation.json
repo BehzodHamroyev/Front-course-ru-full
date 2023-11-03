@@ -1,4 +1,8 @@
 {
+  "HB": "HB",
+  "HB_": "HB_",
+  "HB_programmer": "HB_programmer",
+  "HB_pto": "HB_pto",
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     " Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam": {
       "": ""
@@ -6,6 +10,7 @@
   },
   "PROFILE PAGE": "PROFILE PAGE",
   "Ulbi TV App": "Ulbi TV App",
+  "add5": "add5",
   "decrement": "decrement",
   "increment": "increment",
   "throw error": "throw error",

@@ -10,7 +10,7 @@ import { ErrorBoundary } from './app/providers/ErrorBoundary';
 const container = document.getElementById('root');
 
 if (!container) {
-    throw new Error('can not finde root');
+  throw new Error('can not finde root');
 }
 
 const root = createRoot(container);

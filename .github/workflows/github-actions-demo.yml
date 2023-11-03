@@ -1,39 +1,82 @@
-name: CI/CD Pipeline
 
+name: linting, testing, building
 on:
   push:
-    branches:
-      - main # Replace with the branch you want to trigger this workflow on
-
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 jobs:
-  build:
+  build-and-ui-testing:
     runs-on: ubuntu-latest
-
+    concurrency: ci-${{ github.ref }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: 18 # You can specify the Node.js version you need
-      - name: Install modules
-        run: npm install
-
-      - name: Build production project
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm ci --force
+      - name: build production project
         run: npm run build:prod
+        if: always()
+      - name: build storybook
+        run: npm run storybook:build
+        if: always()
+      - name: screenshot testing
+        run: npm run test:ui:ci
+        if: always()
+      - name: unit testing
+        if: always()
+        run: npm run test:unit
+      - name: Generate HTML report
+        run: npm run test:ui:report
+        if: always()
+      - name: move loki
+        run: mv .loki reports/
+        if: always()
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        if: always()
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        if: always()
+        with:
+          path: 'reports'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: always()
+        uses: actions/deploy-pages@v1
 
-      # - name: Linting TypeScript
-      #   run: npm run lint:ts
-
-      - name: Linting CSS
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm ci --force
+      - name: linting typescript
+        run: npm run lint:ts
+        if: always()
+      - name: linting css
         run: npm run lint:scss
 
-      - name: Unit Testing
-        run: npm run test:unit
-
-      - name: Build Storybook
-        run: npm run storybook:build
-
-      - name: Screenshot Testing
-        run: npm run test:ui:ci

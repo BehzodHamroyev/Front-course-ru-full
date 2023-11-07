@@ -1,31 +1,30 @@
-import { login } from '../../support/commands/login';
-import { selectByTestId } from '../../helper/selectByTestId';
+import { selectByTestId } from '../../helpers/selectByTestId';
 
-describe('Routing', () => {
-  describe('with out authentification', () => {
-    it('Innitial main page', () => {
+describe('Роутинг', () => {
+  describe('Пользователь НЕ авторизован', () => {
+    it('Переход на главную страницу', () => {
       cy.visit('/');
       cy.get(selectByTestId('MainPage')).should('exist');
     });
-    it('when user change his location from main page to profile page ', () => {
+    it('Переход открывает страницу профиля', () => {
       cy.visit('/profile/1');
       cy.get(selectByTestId('MainPage')).should('exist');
     });
-    it('incorrect path ', () => {
+    it('Переход открывает несуществующий маршрут ', () => {
       cy.visit('/fasfasfasf');
       cy.get(selectByTestId('NotFoundPage')).should('exist');
     });
   });
-  describe('with authentification', () => {
+  describe('Пользователь авторизован', () => {
     beforeEach(() => {
-      cy.login('admin', '123');
+      cy.login();
     });
-    it('when user done login then he/she be on profile page', () => {
+    it('Переход открывает страницу профиля', () => {
       cy.visit('/profile/1');
       cy.get(selectByTestId('ProfilePage')).should('exist');
     });
 
-    it('when user change their location to article page', () => {
+    it('Переход открывает страницу со списком статей', () => {
       cy.visit('/articles');
       cy.get(selectByTestId('ArticlesPage')).should('exist');
     });

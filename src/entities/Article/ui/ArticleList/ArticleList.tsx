@@ -9,11 +9,11 @@ import cls from './ArticleList.module.scss';
 import { Article } from '../../model/types/article';
 
 interface ArticleListProps {
-    className?: string;
-    articles: Article[]
-    isLoading?: boolean;
-    target?: HTMLAttributeAnchorTarget;
-    view?: ArticleView;
+  className?: string;
+  articles: Article[]
+  isLoading?: boolean;
+  target?: HTMLAttributeAnchorTarget;
+  view?: ArticleView;
 }
 
 const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
@@ -42,16 +42,17 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
   return (
       <div
-            className={classNames(cls.ArticleList, {}, [className, cls[view]])}
-        >
+      data-testid="ArticleList"
+      className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+    >
           {articles.map((item) => (
               <ArticleListItem
-                    article={item}
-                    view={view}
-                    target={target}
-                    key={item.id}
-                    className={cls.card}
-                />
+          article={item}
+          view={view}
+          target={target}
+          key={item.id}
+          className={cls.card}
+        />
           ))}
           {isLoading && getSkeletons(view)}
       </div>

@@ -5,10 +5,10 @@ import { Icon } from '../Icon/Icon';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
 interface StarRatingProps {
-    className?: string;
-    onSelect?: (starsCount: number) => void;
-    size?: number;
-    selectedStars?: number;
+  className?: string;
+  onSelect?: (starsCount: number) => void;
+  size?: number;
+  selectedStars?: number;
 }
 
 const stars = [1, 2, 3, 4, 5];
@@ -44,19 +44,21 @@ export const StarRating = memo((props: StarRatingProps) => {
       <div className={classNames(cls.StarRating, {}, [className])}>
           {stars.map((starNumber) => (
               <Icon
-                    className={classNames(
-                      cls.starIcon,
-                      { [cls.selected]: isSelected },
-                      [currentStarsCount >= starNumber ? cls.hovered : cls.normal],
-                    )}
-                    Svg={StarIcon}
-                    key={starNumber}
-                    width={size}
-                    height={size}
-                    onMouseLeave={onLeave}
-                    onMouseEnter={onHover(starNumber)}
-                    onClick={onClick(starNumber)}
-                />
+          className={classNames(
+            cls.starIcon,
+            { [cls.selected]: isSelected },
+            [currentStarsCount >= starNumber ? cls.hovered : cls.normal],
+          )}
+          Svg={StarIcon}
+          key={starNumber}
+          width={size}
+          height={size}
+          onMouseLeave={onLeave}
+          onMouseEnter={onHover(starNumber)}
+          onClick={onClick(starNumber)}
+          data-testid={`StarRating.${starNumber}`}
+          data-selected={currentStarsCount >= starNumber}
+        />
           ))}
       </div>
   );

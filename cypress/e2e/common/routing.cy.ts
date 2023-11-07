@@ -1,30 +1,30 @@
 import { selectByTestId } from '../../helpers/selectByTestId';
 
-describe('Роутинг', () => {
-  describe('Пользователь НЕ авторизован', () => {
-    it('Переход на главную страницу', () => {
+describe('Routing', () => {
+  describe('User is NOT authorized', () => {
+    it('Go to main page', () => {
       cy.visit('/');
       cy.get(selectByTestId('MainPage')).should('exist');
     });
-    it('Переход открывает страницу профиля', () => {
+    it('Go to opens profile page', () => {
       cy.visit('/profile/1');
       cy.get(selectByTestId('MainPage')).should('exist');
     });
-    it('Переход открывает несуществующий маршрут ', () => {
+    it('The transition opens a non-existent route', () => {
       cy.visit('/fasfasfasf');
       cy.get(selectByTestId('NotFoundPage')).should('exist');
     });
   });
-  describe('Пользователь авторизован', () => {
+  describe('User is authorized', () => {
     beforeEach(() => {
       cy.login();
     });
-    it('Переход открывает страницу профиля', () => {
+    it('Go to opens profile page', () => {
       cy.visit('/profile/1');
       cy.get(selectByTestId('ProfilePage')).should('exist');
     });
 
-    it('Переход открывает страницу со списком статей', () => {
+    it('The transition opens a page with a list of articles', () => {
       cy.visit('/articles');
       cy.get(selectByTestId('ArticlesPage')).should('exist');
     });

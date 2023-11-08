@@ -21,6 +21,5 @@ describe('EditableProfileCard.cy.tsx', () => {
                 <EditableProfileCard id={USER_ID} />
             </TestProvider>,
     );
-    // описываем тест кейс
   });
 });

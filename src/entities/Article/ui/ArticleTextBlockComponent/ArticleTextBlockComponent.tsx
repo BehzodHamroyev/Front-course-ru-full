@@ -1,5 +1,7 @@
+/* eslint-disable i18next/no-literal-string */
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import { translate } from 'bing-translate-api';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
@@ -13,48 +15,62 @@ interface ArticleTextBlockComponentProps {
 }
 
 export const ArticleTextBlockComponent = memo(
-    (props: ArticleTextBlockComponentProps) => {
-        const { className, block } = props;
-        const { t } = useTranslation();
+  (props: ArticleTextBlockComponentProps) => {
+    const { className, block } = props;
+    const { t } = useTranslation();
+    const lang = localStorage.getItem('i18nextLng');
+    const [state, setState] = useState<string[]>([]);
+    console.log(lang, 'lan');
 
-        return (
-            <div
+    // eslint-disable-next-line array-callback-return
+    block.paragraphs.map((paragraphs) => {
+      translate(paragraphs, null, 'en').then((res) => {
+        setState((pre) => [...pre, res.translation]);
+      }).catch((err) => {
+        console.error(err);
+      });
+    });
+
+    console.log(state, 'st');
+
+    return (
+        <div
                 className={classNames(cls.ArticleTextBlockComponent, {}, [
-                    className,
+                  className,
                 ])}
             >
-                {block.title && (
-                    <ToggleFeatures
+            {block.title && (
+            <ToggleFeatures
                         feature="isAppRedesigned"
                         on={<Text title={block.title} className={cls.title} />}
-                        off={
+                        off={(
                             <TextDeprecated
                                 title={block.title}
                                 className={cls.title}
                             />
-                        }
+                          )}
                     />
-                )}
-                {block.paragraphs.map((paragraph, index) => (
-                    <ToggleFeatures
+            )}
+            {block.paragraphs.map((paragraph, index) => (
+                <ToggleFeatures
                         feature="isAppRedesigned"
-                        on={
+                        on={(
                             <Text
                                 key={paragraph}
                                 text={paragraph}
                                 className={cls.paragraph}
                             />
-                        }
-                        off={
+                          )}
+                        off={(
                             <TextDeprecated
                                 key={paragraph}
                                 text={paragraph}
                                 className={cls.paragraph}
                             />
-                        }
+                          )}
                     />
-                ))}
-            </div>
-        );
-    },
+            ))}
+        </div>
+    );
+  },
 );

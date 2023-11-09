@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string */
 import React, { memo, Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -15,38 +16,39 @@ import { useAppToolbar } from './lib/useAppToolbar';
 import { withTheme } from './providers/ThemeProvider/ui/withTheme';
 
 const App = memo(() => {
-    const { theme } = useTheme();
-    const dispatch = useAppDispatch();
-    const inited = useSelector(getUserInited);
-    const toolbar = useAppToolbar();
+  const { theme } = useTheme();
+  const dispatch = useAppDispatch();
+  const inited = useSelector(getUserInited);
+  const toolbar = useAppToolbar();
 
-    useEffect(() => {
-        if (!inited) {
-            dispatch(initAuthData());
-        }
-    }, [dispatch, inited]);
-
+  useEffect(() => {
     if (!inited) {
-        return (
-            <ToggleFeatures
+      dispatch(initAuthData());
+    }
+  }, [dispatch, inited]);
+
+  if (!inited) {
+    return (
+        <ToggleFeatures
                 feature="isAppRedesigned"
-                on={
+                on={(
                     <div
                         id="app"
                         className={classNames('app_redesigned', {}, [theme])}
                     >
-                        <AppLoaderLayout />{' '}
+                        <AppLoaderLayout />
+                        {' '}
                     </div>
-                }
+                  )}
                 off={<PageLoader />}
             />
-        );
-    }
+    );
+  }
 
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            off={
+            off={(
                 <div id="app" className={classNames('app', {}, [theme])}>
                     <Suspense fallback="">
                         <Navbar />
@@ -56,8 +58,8 @@ const App = memo(() => {
                         </div>
                     </Suspense>
                 </div>
-            }
-            on={
+              )}
+            on={(
                 <div
                     id="app"
                     className={classNames('app_redesigned', {}, [theme])}
@@ -71,9 +73,9 @@ const App = memo(() => {
                         />
                     </Suspense>
                 </div>
-            }
+              )}
         />
-    );
+  );
 });
 
 export default withTheme(App);

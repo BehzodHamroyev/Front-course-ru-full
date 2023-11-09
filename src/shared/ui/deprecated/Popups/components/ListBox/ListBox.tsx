@@ -26,7 +26,6 @@ interface ListBoxProps {
 }
 
 /**
- * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
  */
 export function ListBox(props: ListBoxProps) {

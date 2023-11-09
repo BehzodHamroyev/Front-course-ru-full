@@ -58,15 +58,14 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                 value={value}
                 onChange={onChange}
             >
-              <HListBox.Button aria-disabled={readonly} className={cls.trigger}>
-                  <Button
-                        // eslint-disable-next-line i18next/no-literal-string
-                        variant="filled"
-                        disabled={readonly}
-                        addonRight={<Icon Svg={ArrowIcon} />}
-                    >
-                      {selectedItem?.content ?? defaultValue}
-                  </Button>
+              <HListBox.Button
+                    as={Button}
+                    // eslint-disable-next-line i18next/no-literal-string
+                    variant="filled"
+                   aria-disabled={readonly}
+                    addonRight={<Icon Svg={ArrowIcon} />}
+                >
+                  {selectedItem?.content ?? defaultValue}
               </HListBox.Button>
               <HListBox.Options
                     className={classNames(cls.options, {}, optionsClasses)}

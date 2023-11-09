@@ -1,7 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 import { useTranslation } from 'react-i18next';
 import { memo, useState } from 'react';
-import { translate } from 'bing-translate-api';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
@@ -20,18 +19,6 @@ export const ArticleTextBlockComponent = memo(
     const { t } = useTranslation();
     const lang = localStorage.getItem('i18nextLng');
     const [state, setState] = useState<string[]>([]);
-    console.log(lang, 'lan');
-
-    // eslint-disable-next-line array-callback-return
-    block.paragraphs.map((paragraphs) => {
-      translate(paragraphs, null, 'en').then((res) => {
-        setState((pre) => [...pre, res.translation]);
-      }).catch((err) => {
-        console.error(err);
-      });
-    });
-
-    console.log(state, 'st');
 
     return (
         <div

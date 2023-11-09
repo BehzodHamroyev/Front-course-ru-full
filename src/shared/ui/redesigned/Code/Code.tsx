@@ -13,16 +13,16 @@ interface CodeProps {
 }
 
 export const Code = memo((props: CodeProps) => {
-    const { className, text } = props;
+  const { className, text } = props;
 
-    const onCopy = useCallback(() => {
-        navigator.clipboard.writeText(text);
-    }, [text]);
+  const onCopy = useCallback(() => {
+    navigator.clipboard.writeText(text);
+  }, [text]);
 
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <pre
                     className={classNames(cls.CodeRedesigned, {}, [className])}
                 >
@@ -34,8 +34,8 @@ export const Code = memo((props: CodeProps) => {
                     />
                     <code>{text}</code>
                 </pre>
-            }
-            off={
+              )}
+            off={(
                 <pre className={classNames(cls.Code, {}, [className])}>
                     <Button
                         onClick={onCopy}
@@ -46,7 +46,7 @@ export const Code = memo((props: CodeProps) => {
                     </Button>
                     <code>{text}</code>
                 </pre>
-            }
+              )}
         />
-    );
+  );
 });

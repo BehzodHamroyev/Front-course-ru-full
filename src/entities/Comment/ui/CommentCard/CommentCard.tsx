@@ -22,53 +22,53 @@ interface CommentCardProps {
 }
 
 export const CommentCard = memo((props: CommentCardProps) => {
-    const { className, comment, isLoading } = props;
+  const { className, comment, isLoading } = props;
 
-    const Skeleton = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => SkeletonRedesigned,
-        off: () => SkeletonDeprecated,
-    });
+  const Skeleton = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => SkeletonRedesigned,
+    off: () => SkeletonDeprecated,
+  });
 
-    if (isLoading) {
-        return (
-            <VStack
+  if (isLoading) {
+    return (
+        <VStack
                 data-testid="CommentCard.Loading"
                 gap="8"
                 max
                 className={classNames(cls.CommentCard, {}, [
-                    className,
-                    cls.loading,
+                  className,
+                  cls.loading,
                 ])}
             >
-                <div className={cls.header}>
-                    <Skeleton width={30} height={30} border="50%" />
-                    <Skeleton
+            <div className={cls.header}>
+                <Skeleton width={30} height={30} border="50%" />
+                <Skeleton
                         height={16}
                         width={100}
                         className={cls.username}
                     />
-                </div>
-                <Skeleton className={cls.text} width="100%" height={50} />
-            </VStack>
-        );
-    }
+            </div>
+            <Skeleton className={cls.text} width="100%" height={50} />
+        </VStack>
+    );
+  }
 
-    if (!comment) {
-        return null;
-    }
+  if (!comment) {
+    return null;
+  }
 
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <Card padding="24" border="partial" fullWidth>
                     <VStack
                         data-testid="CommentCard.Content"
                         gap="8"
                         max
                         className={classNames(cls.CommentCardRedesigned, {}, [
-                            className,
+                          className,
                         ])}
                     >
                         <AppLink to={getRouteProfile(comment.user.id)}>
@@ -85,8 +85,8 @@ export const CommentCard = memo((props: CommentCardProps) => {
                         <Text text={comment.text} />
                     </VStack>
                 </Card>
-            }
-            off={
+              )}
+            off={(
                 <VStack
                     data-testid="CommentCard.Content"
                     gap="8"
@@ -110,7 +110,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
                     </AppLinkDeprecated>
                     <TextDeprecated className={cls.text} text={comment.text} />
                 </VStack>
-            }
+              )}
         />
-    );
+  );
 });

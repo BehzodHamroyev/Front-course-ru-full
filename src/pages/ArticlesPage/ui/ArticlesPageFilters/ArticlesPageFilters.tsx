@@ -15,44 +15,44 @@ interface ArticlesPageFiltersProps {
 }
 
 export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
-    const { className } = props;
-    const { t } = useTranslation();
-    const {
-        onChangeSort,
-        onChangeType,
-        sort,
-        type,
-        onChangeSearch,
-        search,
-        onChangeView,
-        view,
-        onChangeOrder,
-        order,
-    } = useArticleFilters();
+  const { className } = props;
+  const { t } = useTranslation();
+  const {
+    onChangeSort,
+    onChangeType,
+    sort,
+    type,
+    onChangeSearch,
+    search,
+    onChangeView,
+    view,
+    onChangeOrder,
+    order,
+  } = useArticleFilters();
 
-    return (
-        <div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
-            <div className={cls.sortWrapper}>
-                <ArticleSortSelector
+  return (
+      <div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
+          <div className={cls.sortWrapper}>
+              <ArticleSortSelector
                     order={order}
                     sort={sort}
                     onChangeOrder={onChangeOrder}
                     onChangeSort={onChangeSort}
                 />
-                <ArticleViewSelector view={view} onViewClick={onChangeView} />
-            </div>
-            <Card className={cls.search}>
-                <Input
+              <ArticleViewSelector view={view} onViewClick={onChangeView} />
+          </div>
+          <Card className={cls.search}>
+              <Input
                     onChange={onChangeSearch}
                     value={search}
                     placeholder={t('Поиск')}
                 />
-            </Card>
-            <ArticleTypeTabs
+          </Card>
+          <ArticleTypeTabs
                 value={type}
                 onChangeType={onChangeType}
                 className={cls.tabs}
             />
-        </div>
-    );
+      </div>
+  );
 });

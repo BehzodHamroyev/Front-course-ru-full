@@ -7,20 +7,20 @@ interface FiltersContainerProps {
 }
 
 export const FiltersContainer = memo((props: FiltersContainerProps) => {
-    const { className } = props;
-    const {
-        onChangeSort,
-        onChangeType,
-        sort,
-        type,
-        onChangeSearch,
-        search,
-        onChangeOrder,
-        order,
-    } = useArticleFilters();
+  const { className } = props;
+  const {
+    onChangeSort,
+    onChangeType,
+    sort,
+    type,
+    onChangeSearch,
+    search,
+    onChangeOrder,
+    order,
+  } = useArticleFilters();
 
-    return (
-        <ArticlesFilters
+  return (
+      <ArticlesFilters
             type={type}
             onChangeSearch={onChangeSearch}
             order={order}
@@ -31,5 +31,5 @@ export const FiltersContainer = memo((props: FiltersContainerProps) => {
             onChangeType={onChangeType}
             className={className}
         />
-    );
+  );
 });

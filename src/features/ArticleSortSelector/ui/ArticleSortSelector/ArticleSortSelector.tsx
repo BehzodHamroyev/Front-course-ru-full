@@ -19,50 +19,52 @@ interface ArticleSortSelectorProps {
 }
 
 export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
-    const { className, onChangeOrder, onChangeSort, order, sort } = props;
-    const { t } = useTranslation();
+  const {
+    className, onChangeOrder, onChangeSort, order, sort,
+  } = props;
+  const { t } = useTranslation();
 
-    const orderOptions = useMemo<SelectOption<SortOrder>[]>(
-        () => [
-            {
-                value: 'asc',
-                content: t('возрастанию'),
-            },
-            {
-                value: 'desc',
-                content: t('убыванию'),
-            },
-        ],
-        [t],
-    );
+  const orderOptions = useMemo<SelectOption<SortOrder>[]>(
+    () => [
+      {
+        value: 'asc',
+        content: t('возрастанию'),
+      },
+      {
+        value: 'desc',
+        content: t('убыванию'),
+      },
+    ],
+    [t],
+  );
 
-    const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(
-        () => [
-            {
-                value: ArticleSortField.CREATED,
-                content: t('дате создания'),
-            },
-            {
-                value: ArticleSortField.TITLE,
-                content: t('названию'),
-            },
-            {
-                value: ArticleSortField.VIEWS,
-                content: t('просмотрам'),
-            },
-        ],
-        [t],
-    );
+  const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(
+    () => [
+      {
+        value: ArticleSortField.CREATED,
+        content: t('дате создания'),
+      },
+      {
+        value: ArticleSortField.TITLE,
+        content: t('названию'),
+      },
+      {
+        value: ArticleSortField.VIEWS,
+        content: t('просмотрам'),
+      },
+    ],
+    [t],
+  );
 
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <div
                     className={classNames(
-                        cls.ArticleSortSelectorRedesigned,
-                        {},
-                        [className],
+                      cls.ArticleSortSelectorRedesigned,
+                      {},
+                      [className],
                     )}
                 >
                     <VStack gap="8">
@@ -79,11 +81,11 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
                         />
                     </VStack>
                 </div>
-            }
-            off={
+              )}
+            off={(
                 <div
                     className={classNames(cls.ArticleSortSelector, {}, [
-                        className,
+                      className,
                     ])}
                 >
                     <Select<ArticleSortField>
@@ -100,7 +102,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
                         className={cls.order}
                     />
                 </div>
-            }
+              )}
         />
-    );
+  );
 });

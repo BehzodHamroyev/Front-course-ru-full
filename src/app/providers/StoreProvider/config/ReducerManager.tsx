@@ -43,6 +43,7 @@ export function createReducerManager(
 
       combinedReducer = combineReducers(reducers);
     },
+
     remove: (key: StateSchemaKey) => {
       if (!key || !reducers[key]) {
         return;

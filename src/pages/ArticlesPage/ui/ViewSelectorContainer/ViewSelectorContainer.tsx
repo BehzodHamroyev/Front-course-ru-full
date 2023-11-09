@@ -7,16 +7,16 @@ interface ViewSelectorContainerProps {
 }
 
 export const ViewSelectorContainer = memo(
-    (props: ViewSelectorContainerProps) => {
-        const { className } = props;
-        const { view, onChangeView } = useArticleFilters();
+  (props: ViewSelectorContainerProps) => {
+    const { className } = props;
+    const { view, onChangeView } = useArticleFilters();
 
-        return (
-            <ArticleViewSelector
+    return (
+        <ArticleViewSelector
                 className={className}
                 view={view}
                 onViewClick={onChangeView}
             />
-        );
-    },
+    );
+  },
 );

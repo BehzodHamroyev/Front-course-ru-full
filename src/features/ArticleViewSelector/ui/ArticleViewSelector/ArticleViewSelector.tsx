@@ -8,8 +8,8 @@ import TiledIcon from '@/shared/assets/icons/tile.svg';
 
 import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
 import {
-    Button as ButtonDeprecated,
-    ButtonTheme,
+  Button as ButtonDeprecated,
+  ButtonTheme,
 } from '@/shared/ui/deprecated/Button';
 import cls from './ArticleViewSelector.module.scss';
 import { ArticleView } from '@/entities/Article';
@@ -25,40 +25,40 @@ interface ArticleViewSelectorProps {
 }
 
 const viewTypes = [
-    {
-        view: ArticleView.SMALL,
-        icon: toggleFeatures({
-            name: 'isAppRedesigned',
-            on: () => TiledIcon,
-            off: () => TiledIconDeprecated,
-        }),
-    },
-    {
-        view: ArticleView.BIG,
-        icon: toggleFeatures({
-            name: 'isAppRedesigned',
-            on: () => ListIcon,
-            off: () => ListIconDeprecated,
-        }),
-    },
+  {
+    view: ArticleView.SMALL,
+    icon: toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => TiledIcon,
+      off: () => TiledIconDeprecated,
+    }),
+  },
+  {
+    view: ArticleView.BIG,
+    icon: toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => ListIcon,
+      off: () => ListIconDeprecated,
+    }),
+  },
 ];
 
 export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
-    const { className, view, onViewClick } = props;
+  const { className, view, onViewClick } = props;
 
-    const onClick = (newView: ArticleView) => () => {
-        onViewClick?.(newView);
-    };
+  const onClick = (newView: ArticleView) => () => {
+    onViewClick?.(newView);
+  };
 
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <Card
                     className={classNames(
-                        cls.ArticleViewSelectorRedesigned,
-                        {},
-                        [className],
+                      cls.ArticleViewSelectorRedesigned,
+                      {},
+                      [className],
                     )}
                     border="round"
                 >
@@ -70,17 +70,17 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
                                 onClick={onClick(viewType.view)}
                                 Svg={viewType.icon}
                                 className={classNames('', {
-                                    [cls.notSelected]: viewType.view !== view,
+                                  [cls.notSelected]: viewType.view !== view,
                                 })}
                             />
                         ))}
                     </HStack>
                 </Card>
-            }
-            off={
+              )}
+            off={(
                 <div
                     className={classNames(cls.ArticleViewSelector, {}, [
-                        className,
+                      className,
                     ])}
                 >
                     {viewTypes.map((viewType) => (
@@ -94,13 +94,13 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
                                 height={24}
                                 Svg={viewType.icon}
                                 className={classNames('', {
-                                    [cls.notSelected]: viewType.view !== view,
+                                  [cls.notSelected]: viewType.view !== view,
                                 })}
                             />
                         </ButtonDeprecated>
                     ))}
                 </div>
-            }
+              )}
         />
-    );
+  );
 });

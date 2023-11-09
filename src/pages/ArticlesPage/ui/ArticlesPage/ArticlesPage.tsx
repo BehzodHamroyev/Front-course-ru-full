@@ -3,8 +3,8 @@ import { memo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
-    DynamicModuleLoader,
-    ReducersList,
+  DynamicModuleLoader,
+  ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -26,47 +26,47 @@ interface ArticlesPageProps {
 }
 
 const reducers: ReducersList = {
-    articlesPage: articlesPageReducer,
+  articlesPage: articlesPageReducer,
 };
 
 const ArticlesPage = (props: ArticlesPageProps) => {
-    const { className } = props;
-    const { t } = useTranslation();
-    const dispatch = useAppDispatch();
-    const [searchParams] = useSearchParams();
+  const { className } = props;
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const [searchParams] = useSearchParams();
 
-    const onLoadNextPart = useCallback(() => {
-        dispatch(fetchNextArticlesPage());
-    }, [dispatch]);
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
 
-    useInitialEffect(() => {
-        dispatch(initArticlesPage(searchParams));
-    });
+  useInitialEffect(() => {
+    dispatch(initArticlesPage(searchParams));
+  });
 
-    const content = (
-        <ToggleFeatures
+  const content = (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <StickyContentLayout
                     left={<ViewSelectorContainer />}
                     right={<FiltersContainer />}
-                    content={
+                    content={(
                         <Page
                             data-testid="ArticlesPage"
                             onScrollEnd={onLoadNextPart}
                             className={classNames(
-                                cls.ArticlesPageRedesigned,
-                                {},
-                                [className],
+                              cls.ArticlesPageRedesigned,
+                              {},
+                              [className],
                             )}
                         >
                             <ArticleInfiniteList className={cls.list} />
                             <ArticlePageGreeting />
                         </Page>
-                    }
+                      )}
                 />
-            }
-            off={
+              )}
+            off={(
                 <Page
                     data-testid="ArticlesPage"
                     onScrollEnd={onLoadNextPart}
@@ -76,15 +76,15 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                     <ArticleInfiniteList className={cls.list} />
                     <ArticlePageGreeting />
                 </Page>
-            }
+              )}
         />
-    );
+  );
 
-    return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            {content}
-        </DynamicModuleLoader>
-    );
+  return (
+      <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+          {content}
+      </DynamicModuleLoader>
+  );
 };
 
 export default memo(ArticlesPage);

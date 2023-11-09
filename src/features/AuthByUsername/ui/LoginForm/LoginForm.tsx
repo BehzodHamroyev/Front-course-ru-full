@@ -3,15 +3,15 @@ import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
-    Button as ButtonDeprecated,
-    ButtonTheme,
+  Button as ButtonDeprecated,
+  ButtonTheme,
 } from '@/shared/ui/deprecated/Button';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
 import {
-    DynamicModuleLoader,
-    ReducersList,
+  DynamicModuleLoader,
+  ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
@@ -33,45 +33,45 @@ export interface LoginFormProps {
 }
 
 const initialReducers: ReducersList = {
-    loginForm: loginReducer,
+  loginForm: loginReducer,
 };
 
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
-    const { t } = useTranslation();
-    const dispatch = useAppDispatch();
-    const username = useSelector(getLoginUsername);
-    const password = useSelector(getLoginPassword);
-    const isLoading = useSelector(getLoginIsLoading);
-    const error = useSelector(getLoginError);
-    const forceUpdate = useForceUpdate();
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const username = useSelector(getLoginUsername);
+  const password = useSelector(getLoginPassword);
+  const isLoading = useSelector(getLoginIsLoading);
+  const error = useSelector(getLoginError);
+  const forceUpdate = useForceUpdate();
 
-    const onChangeUsername = useCallback(
-        (value: string) => {
-            dispatch(loginActions.setUsername(value));
-        },
-        [dispatch],
-    );
+  const onChangeUsername = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setUsername(value));
+    },
+    [dispatch],
+  );
 
-    const onChangePassword = useCallback(
-        (value: string) => {
-            dispatch(loginActions.setPassword(value));
-        },
-        [dispatch],
-    );
+  const onChangePassword = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setPassword(value));
+    },
+    [dispatch],
+  );
 
-    const onLoginClick = useCallback(async () => {
-        const result = await dispatch(loginByUsername({ username, password }));
-        if (result.meta.requestStatus === 'fulfilled') {
-            onSuccess();
-            forceUpdate();
-        }
-    }, [dispatch, username, password, onSuccess, forceUpdate]);
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(loginByUsername({ username, password }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess();
+      forceUpdate();
+    }
+  }, [dispatch, username, password, onSuccess, forceUpdate]);
 
-    return (
-        <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
-            <ToggleFeatures
+  return (
+      <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
+          <ToggleFeatures
                 feature="isAppRedesigned"
-                on={
+                on={(
                     <VStack
                         gap="16"
                         className={classNames(cls.LoginForm, {}, [className])}
@@ -106,8 +106,8 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                             {t('Войти')}
                         </Button>
                     </VStack>
-                }
-                off={
+                  )}
+                off={(
                     <div className={classNames(cls.LoginForm, {}, [className])}>
                         <TextDeprecated title={t('Форма авторизации')} />
                         {error && (
@@ -140,10 +140,10 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                             {t('Войти')}
                         </ButtonDeprecated>
                     </div>
-                }
+                  )}
             />
-        </DynamicModuleLoader>
-    );
+      </DynamicModuleLoader>
+  );
 });
 
 export default LoginForm;

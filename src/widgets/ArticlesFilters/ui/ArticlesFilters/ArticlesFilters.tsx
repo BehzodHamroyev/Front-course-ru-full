@@ -25,44 +25,44 @@ interface ArticlesFiltersProps {
 }
 
 export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
-    const {
-        className,
-        onChangeType,
-        onChangeSearch,
-        search,
-        onChangeSort,
-        sort,
-        onChangeOrder,
-        order,
-        type,
-    } = props;
-    const { t } = useTranslation();
+  const {
+    className,
+    onChangeType,
+    onChangeSearch,
+    search,
+    onChangeSort,
+    sort,
+    onChangeOrder,
+    order,
+    type,
+  } = props;
+  const { t } = useTranslation();
 
-    return (
-        <Card
+  return (
+      <Card
             className={classNames(cls.ArticlesFilters, {}, [className])}
             padding="24"
         >
-            <VStack gap="32">
-                <Input
+          <VStack gap="32">
+              <Input
                     onChange={onChangeSearch}
                     value={search}
                     size="s"
                     placeholder={t('Поиск')}
                     addonLeft={<Icon Svg={SearchIcon} />}
                 />
-                <ArticleTypeTabs
+              <ArticleTypeTabs
                     value={type}
                     onChangeType={onChangeType}
                     className={cls.tabs}
                 />
-                <ArticleSortSelector
+              <ArticleSortSelector
                     order={order}
                     sort={sort}
                     onChangeOrder={onChangeOrder}
                     onChangeSort={onChangeSort}
                 />
-            </VStack>
-        </Card>
-    );
+          </VStack>
+      </Card>
+  );
 });

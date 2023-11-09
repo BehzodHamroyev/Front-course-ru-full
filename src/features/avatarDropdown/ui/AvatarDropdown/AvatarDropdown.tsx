@@ -5,15 +5,15 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
 import {
-    getUserAuthData,
-    isUserAdmin,
-    isUserManager,
-    userActions,
+  getUserAuthData,
+  isUserAdmin,
+  isUserManager,
+  userActions,
 } from '@/entities/User';
 import {
-    getRouteAdmin,
-    getRouteProfile,
-    getRouteSettings,
+  getRouteAdmin,
+  getRouteProfile,
+  getRouteSettings,
 } from '@/shared/const/router';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Dropdown } from '@/shared/ui/redesigned/Popups';
@@ -24,71 +24,71 @@ interface AvatarDropdownProps {
 }
 
 export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
-    const { className } = props;
-    const { t } = useTranslation();
-    const dispatch = useDispatch();
-    const isAdmin = useSelector(isUserAdmin);
-    const isManager = useSelector(isUserManager);
-    const authData = useSelector(getUserAuthData);
+  const { className } = props;
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const isAdmin = useSelector(isUserAdmin);
+  const isManager = useSelector(isUserManager);
+  const authData = useSelector(getUserAuthData);
 
-    const onLogout = useCallback(() => {
-        dispatch(userActions.logout());
-    }, [dispatch]);
+  const onLogout = useCallback(() => {
+    dispatch(userActions.logout());
+  }, [dispatch]);
 
-    const isAdminPanelAvailable = isAdmin || isManager;
+  const isAdminPanelAvailable = isAdmin || isManager;
 
-    if (!authData) {
-        return null;
-    }
+  if (!authData) {
+    return null;
+  }
 
-    const items = [
-        ...(isAdminPanelAvailable
-            ? [
-                  {
-                      content: t('Админка'),
-                      href: getRouteAdmin(),
-                  },
-              ]
-            : []),
+  const items = [
+    ...(isAdminPanelAvailable
+      ? [
         {
-            content: t('Настройки'),
-            href: getRouteSettings(),
+          content: t('Админка'),
+          href: getRouteAdmin(),
         },
-        {
-            content: t('Профиль'),
-            href: getRouteProfile(authData.id),
-        },
-        {
-            content: t('Выйти'),
-            onClick: onLogout,
-        },
-    ];
+      ]
+      : []),
+    {
+      content: t('Настройки'),
+      href: getRouteSettings(),
+    },
+    {
+      content: t('Профиль'),
+      href: getRouteProfile(authData.id),
+    },
+    {
+      content: t('Выйти'),
+      onClick: onLogout,
+    },
+  ];
 
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <Dropdown
                     direction="bottom left"
                     className={classNames('', {}, [className])}
                     items={items}
                     trigger={<Avatar size={40} src={authData.avatar} />}
                 />
-            }
-            off={
+              )}
+            off={(
                 <DropdownDeprecated
                     direction="bottom left"
                     className={classNames('', {}, [className])}
                     items={items}
-                    trigger={
+                    trigger={(
                         <AvatarDeprecated
                             fallbackInverted
                             size={30}
                             src={authData.avatar}
                         />
-                    }
+                      )}
                 />
-            }
+              )}
         />
-    );
+  );
 });

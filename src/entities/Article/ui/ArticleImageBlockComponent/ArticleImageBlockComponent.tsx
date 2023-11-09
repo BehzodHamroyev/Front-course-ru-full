@@ -13,30 +13,30 @@ interface ArticleImageBlockComponentProps {
 }
 
 export const ArticleImageBlockComponent = memo(
-    (props: ArticleImageBlockComponentProps) => {
-        const { className, block } = props;
-        const { t } = useTranslation();
+  (props: ArticleImageBlockComponentProps) => {
+    const { className, block } = props;
+    const { t } = useTranslation();
 
-        return (
-            <div
+    return (
+        <div
                 className={classNames(cls.ArticleImageBlockComponent, {}, [
-                    className,
+                  className,
                 ])}
             >
-                <img src={block.src} alt={block.title} className={cls.img} />
-                {block.title && (
-                    <ToggleFeatures
+            <img src={block.src} alt={block.title} className={cls.img} />
+            {block.title && (
+            <ToggleFeatures
                         feature="isAppRedesigned"
                         on={<Text text={block.title} align="center" />}
-                        off={
+                        off={(
                             <TextDeprecated
                                 text={block.title}
                                 align={TextAlign.CENTER}
                             />
-                        }
+                          )}
                     />
-                )}
-            </div>
-        );
-    },
+            )}
+        </div>
+    );
+  },
 );

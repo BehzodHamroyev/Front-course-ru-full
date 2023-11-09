@@ -9,16 +9,16 @@ interface ScrollToolbarProps {
 }
 
 export const ScrollToolbar = memo((props: ScrollToolbarProps) => {
-    const { className } = props;
+  const { className } = props;
 
-    return (
-        <VStack
+  return (
+      <VStack
             justify="center"
             align="center"
             max
             className={classNames(cls.ScrollToolbar, {}, [className])}
         >
-            <ScrollToTopButton />
-        </VStack>
-    );
+          <ScrollToTopButton />
+      </VStack>
+  );
 });

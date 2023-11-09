@@ -13,11 +13,11 @@ export interface ArticleListItemProps {
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
             on={<ArticleListItemRedesigned {...props} />}
             off={<ArticleListItemDeprecated {...props} />}
         />
-    );
+  );
 });

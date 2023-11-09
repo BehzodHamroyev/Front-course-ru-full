@@ -15,20 +15,20 @@ interface ThemeSwitcherProps {
 }
 
 export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
-    const { theme, toggleTheme } = useTheme();
-    const dispatch = useAppDispatch();
+  const { theme, toggleTheme } = useTheme();
+  const dispatch = useAppDispatch();
 
-    const onToggleHandler = useCallback(() => {
-        toggleTheme((newTheme) => {
-            dispatch(saveJsonSettings({ theme: newTheme }));
-        });
-    }, [dispatch, toggleTheme]);
+  const onToggleHandler = useCallback(() => {
+    toggleTheme((newTheme) => {
+      dispatch(saveJsonSettings({ theme: newTheme }));
+    });
+  }, [dispatch, toggleTheme]);
 
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
             on={<Icon Svg={ThemeIcon} clickable onClick={onToggleHandler} />}
-            off={
+            off={(
                 <Button
                     theme={ButtonTheme.CLEAR}
                     className={classNames('', {}, [className])}
@@ -41,7 +41,7 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
                         inverted
                     />
                 </Button>
-            }
+              )}
         />
-    );
+  );
 });

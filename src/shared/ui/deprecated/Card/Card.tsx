@@ -19,23 +19,23 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
  * @deprecated
  */
 export const Card = memo((props: CardProps) => {
-    const {
-        className,
-        children,
-        theme = CardTheme.NORMAL,
-        max,
-        ...otherProps
-    } = props;
+  const {
+    className,
+    children,
+    theme = CardTheme.NORMAL,
+    max,
+    ...otherProps
+  } = props;
 
-    return (
-        <div
+  return (
+      <div
             className={classNames(cls.Card, { [cls.max]: max }, [
-                className,
-                cls[theme],
+              className,
+              cls[theme],
             ])}
             {...otherProps}
         >
-            {children}
-        </div>
-    );
+          {children}
+      </div>
+  );
 });

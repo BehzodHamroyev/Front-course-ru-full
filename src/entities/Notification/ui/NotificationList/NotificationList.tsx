@@ -13,40 +13,40 @@ interface NotificationListProps {
 }
 
 export const NotificationList = memo((props: NotificationListProps) => {
-    const { className } = props;
-    const { data, isLoading } = useNotifications(null, {
-        pollingInterval: 10000,
-    });
+  const { className } = props;
+  const { data, isLoading } = useNotifications(null, {
+    pollingInterval: 10000,
+  });
 
-    const Skeleton = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => SkeletonRedesigned,
-        off: () => SkeletonDeprecated,
-    });
+  const Skeleton = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => SkeletonRedesigned,
+    off: () => SkeletonDeprecated,
+  });
 
-    if (isLoading) {
-        return (
-            <VStack
+  if (isLoading) {
+    return (
+        <VStack
                 gap="16"
                 max
                 className={classNames(cls.NotificationList, {}, [className])}
             >
-                <Skeleton width="100%" border="8px" height="80px" />
-                <Skeleton width="100%" border="8px" height="80px" />
-                <Skeleton width="100%" border="8px" height="80px" />
-            </VStack>
-        );
-    }
+            <Skeleton width="100%" border="8px" height="80px" />
+            <Skeleton width="100%" border="8px" height="80px" />
+            <Skeleton width="100%" border="8px" height="80px" />
+        </VStack>
+    );
+  }
 
-    return (
-        <VStack
+  return (
+      <VStack
             gap="16"
             max
             className={classNames(cls.NotificationList, {}, [className])}
         >
-            {data?.map((item) => (
-                <NotificationItem key={item.id} item={item} />
-            ))}
-        </VStack>
-    );
+          {data?.map((item) => (
+              <NotificationItem key={item.id} item={item} />
+          ))}
+      </VStack>
+  );
 });

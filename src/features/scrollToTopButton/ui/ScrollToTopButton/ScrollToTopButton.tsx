@@ -9,14 +9,14 @@ interface ScrollToTopButtonProps {
 }
 
 export const ScrollToTopButton = memo((props: ScrollToTopButtonProps) => {
-    const { className } = props;
+  const { className } = props;
 
-    const onCLick = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+  const onCLick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-    return (
-        <Icon
+  return (
+      <Icon
             Svg={CircleIcon}
             clickable
             onClick={onCLick}
@@ -24,5 +24,5 @@ export const ScrollToTopButton = memo((props: ScrollToTopButtonProps) => {
             height={32}
             className={classNames(cls.ScrollToTopButton, {}, [className])}
         />
-    );
+  );
 });

@@ -9,11 +9,11 @@ interface ToggleFeaturesProps {
 }
 
 export const ToggleFeatures = (props: ToggleFeaturesProps) => {
-    const { on, off, feature } = props;
+  const { on, off, feature } = props;
 
-    if (getFeatureFlag(feature)) {
-        return on;
-    }
+  if (getFeatureFlag(feature)) {
+    return on;
+  }
 
-    return off;
+  return off;
 };

@@ -17,36 +17,35 @@ interface SidebarProps {
 }
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
-    const [collapsed, setCollapsed] = useState(false);
-    const sidebarItemsList = useSidebarItems();
+  const [collapsed, setCollapsed] = useState(false);
+  const sidebarItemsList = useSidebarItems();
 
-    const onToggle = () => {
-        console.log(collapsed);
-        setCollapsed((prev) => !prev);
-    };
+  const onToggle = () => {
+    console.log(collapsed);
+    setCollapsed((prev) => !prev);
+  };
 
-    const itemsList = useMemo(
-        () =>
-            sidebarItemsList.map((item) => (
-                <SidebarItem
+  const itemsList = useMemo(
+    () => sidebarItemsList.map((item) => (
+        <SidebarItem
                     item={item}
                     collapsed={collapsed}
                     key={item.path}
                 />
-            )),
-        [collapsed, sidebarItemsList],
-    );
+    )),
+    [collapsed, sidebarItemsList],
+  );
 
-    return (
-        <ToggleFeatures
+  return (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <aside
                     data-testid="sidebar"
                     className={classNames(
-                        cls.SidebarRedesigned,
-                        { [cls.collapsedRedesigned]: collapsed },
-                        [className],
+                      cls.SidebarRedesigned,
+                      { [cls.collapsedRedesigned]: collapsed },
+                      [className],
                     )}
                 >
                     <AppLogo
@@ -68,14 +67,14 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         <LangSwitcher short={collapsed} className={cls.lang} />
                     </div>
                 </aside>
-            }
-            off={
+              )}
+            off={(
                 <aside
                     data-testid="sidebar"
                     className={classNames(
-                        cls.Sidebar,
-                        { [cls.collapsed]: collapsed },
-                        [className],
+                      cls.Sidebar,
+                      { [cls.collapsed]: collapsed },
+                      [className],
                     )}
                 >
                     <Button
@@ -96,7 +95,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         <LangSwitcher short={collapsed} className={cls.lang} />
                     </div>
                 </aside>
-            }
+              )}
         />
-    );
+  );
 });

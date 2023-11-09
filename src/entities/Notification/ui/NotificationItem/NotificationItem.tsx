@@ -14,25 +14,25 @@ interface NotificationItemProps {
 }
 
 export const NotificationItem = memo((props: NotificationItemProps) => {
-    const { className, item } = props;
+  const { className, item } = props;
 
-    const content = (
-        <ToggleFeatures
+  const content = (
+      <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <Card
                     className={classNames(cls.NotificationItem, {}, [
-                        className,
+                      className,
                     ])}
                 >
                     <Text title={item.title} text={item.description} />
                 </Card>
-            }
-            off={
+              )}
+            off={(
                 <CardDeprecated
                     theme={CardTheme.OUTLINED}
                     className={classNames(cls.NotificationItem, {}, [
-                        className,
+                      className,
                     ])}
                 >
                     <TextDeprecated
@@ -40,22 +40,22 @@ export const NotificationItem = memo((props: NotificationItemProps) => {
                         text={item.description}
                     />
                 </CardDeprecated>
-            }
+              )}
         />
-    );
+  );
 
-    if (item.href) {
-        return (
-            <a
+  if (item.href) {
+    return (
+        <a
                 className={cls.link}
                 target="_blank"
                 href={item.href}
                 rel="noreferrer"
             >
-                {content}
-            </a>
-        );
-    }
+            {content}
+        </a>
+    );
+  }
 
-    return content;
+  return content;
 });

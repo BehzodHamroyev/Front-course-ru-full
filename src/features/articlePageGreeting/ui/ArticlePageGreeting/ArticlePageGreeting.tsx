@@ -8,40 +8,40 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Drawer } from '@/shared/ui/redesigned/Drawer';
 
 export const ArticlePageGreeting = memo(() => {
-    const { t } = useTranslation();
-    const [isOpen, setIsOpen] = useState(false);
-    const { isArticlesPageWasOpened } = useJsonSettings();
-    const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const { isArticlesPageWasOpened } = useJsonSettings();
+  const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        if (!isArticlesPageWasOpened) {
-            setIsOpen(true);
-            dispatch(saveJsonSettings({ isArticlesPageWasOpened: true }));
-        }
-    }, [dispatch, isArticlesPageWasOpened]);
+  useEffect(() => {
+    if (!isArticlesPageWasOpened) {
+      setIsOpen(true);
+      dispatch(saveJsonSettings({ isArticlesPageWasOpened: true }));
+    }
+  }, [dispatch, isArticlesPageWasOpened]);
 
-    const onClose = () => setIsOpen(false);
+  const onClose = () => setIsOpen(false);
 
-    const text = (
-        <Text
+  const text = (
+      <Text
             title={t('Добро пожаловать на страницу статей')}
             text={t(
-                'Здесь вы можете искать и просматривать статьи на различные темы',
+              'Здесь вы можете искать и просматривать статьи на различные темы',
             )}
         />
-    );
+  );
 
-    if (isMobile) {
-        return (
-            <Drawer lazy isOpen={isOpen} onClose={onClose}>
-                {text}
-            </Drawer>
-        );
-    }
-
+  if (isMobile) {
     return (
-        <Modal lazy isOpen={isOpen} onClose={onClose}>
+        <Drawer lazy isOpen={isOpen} onClose={onClose}>
             {text}
-        </Modal>
+        </Drawer>
     );
+  }
+
+  return (
+      <Modal lazy isOpen={isOpen} onClose={onClose}>
+          {text}
+      </Modal>
+  );
 });

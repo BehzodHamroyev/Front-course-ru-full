@@ -8,8 +8,8 @@ import { HStack } from '@/shared/ui/redesigned/Stack';
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
 import {
-    Button as ButtonDeprecated,
-    ButtonTheme,
+  Button as ButtonDeprecated,
+  ButtonTheme,
 } from '@/shared/ui/deprecated/Button';
 import { getUserAuthData } from '@/entities/User';
 import { profileActions } from '../../model/slice/profileSlice';
@@ -25,32 +25,32 @@ interface EditableProfileCardHeaderProps {
 }
 
 export const EditableProfileCardHeader = memo(
-    (props: EditableProfileCardHeaderProps) => {
-        const { className } = props;
+  (props: EditableProfileCardHeaderProps) => {
+    const { className } = props;
 
-        const { t } = useTranslation('profile');
-        const authData = useSelector(getUserAuthData);
-        const profileData = useSelector(getProfileData);
-        const canEdit = authData?.id === profileData?.id;
-        const readonly = useSelector(getProfileReadonly);
-        const dispatch = useAppDispatch();
+    const { t } = useTranslation('profile');
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
+    const canEdit = authData?.id === profileData?.id;
+    const readonly = useSelector(getProfileReadonly);
+    const dispatch = useAppDispatch();
 
-        const onEdit = useCallback(() => {
-            dispatch(profileActions.setReadonly(false));
-        }, [dispatch]);
+    const onEdit = useCallback(() => {
+      dispatch(profileActions.setReadonly(false));
+    }, [dispatch]);
 
-        const onCancelEdit = useCallback(() => {
-            dispatch(profileActions.cancelEdit());
-        }, [dispatch]);
+    const onCancelEdit = useCallback(() => {
+      dispatch(profileActions.cancelEdit());
+    }, [dispatch]);
 
-        const onSave = useCallback(() => {
-            dispatch(updateProfileData());
-        }, [dispatch]);
+    const onSave = useCallback(() => {
+      dispatch(updateProfileData());
+    }, [dispatch]);
 
-        return (
-            <ToggleFeatures
+    return (
+        <ToggleFeatures
                 feature="isAppRedesigned"
-                on={
+                on={(
                     <Card padding="24" fullWidth border="partial">
                         <HStack
                             max
@@ -89,8 +89,8 @@ export const EditableProfileCardHeader = memo(
                             )}
                         </HStack>
                     </Card>
-                }
-                off={
+                  )}
+                off={(
                     <HStack
                         max
                         justify="between"
@@ -128,8 +128,8 @@ export const EditableProfileCardHeader = memo(
                             </div>
                         )}
                     </HStack>
-                }
+                  )}
             />
-        );
-    },
+    );
+  },
 );

@@ -13,39 +13,41 @@ interface CurrencySelectProps {
 }
 
 const options = [
-    { value: Currency.RUB, content: Currency.RUB },
-    { value: Currency.EUR, content: Currency.EUR },
-    { value: Currency.USD, content: Currency.USD },
+  { value: Currency.RUB, content: Currency.RUB },
+  { value: Currency.EUR, content: Currency.EUR },
+  { value: Currency.USD, content: Currency.USD },
 ];
 
 export const CurrencySelect = memo(
-    ({ className, value, onChange, readonly }: CurrencySelectProps) => {
-        const { t } = useTranslation();
+  ({
+    className, value, onChange, readonly,
+  }: CurrencySelectProps) => {
+    const { t } = useTranslation();
 
-        const onChangeHandler = useCallback(
-            (value: string) => {
-                onChange?.(value as Currency);
-            },
-            [onChange],
-        );
+    const onChangeHandler = useCallback(
+      (value: string) => {
+        onChange?.(value as Currency);
+      },
+      [onChange],
+    );
 
-        const props = {
-            className,
-            value,
-            defaultValue: t('Укажите валюту'),
-            label: t('Укажите валюту'),
-            items: options,
-            onChange: onChangeHandler,
-            readonly,
-            direction: 'top right' as const,
-        };
+    const props = {
+      className,
+      value,
+      defaultValue: t('Укажите валюту'),
+      label: t('Укажите валюту'),
+      items: options,
+      onChange: onChangeHandler,
+      readonly,
+      direction: 'top right' as const,
+    };
 
-        return (
-            <ToggleFeatures
+    return (
+        <ToggleFeatures
                 feature="isAppRedesigned"
                 on={<ListBox {...props} />}
                 off={<ListBoxDeprecated {...props} />}
             />
-        );
-    },
+    );
+  },
 );

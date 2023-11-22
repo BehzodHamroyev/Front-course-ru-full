@@ -11,7 +11,7 @@ import {
 } from '../../model/selectors/articlesPageSelectors';
 
 interface ArticleInfiniteListProps {
-    className?: string;
+  className?: string;
 }
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
@@ -29,10 +29,10 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
 
   return (
       <ArticleList
-            isLoading={isLoading}
-            view={view}
-            articles={articles}
-            className={className}
-        />
+      isLoading={isLoading}
+      view={view}
+      articles={articles}
+      className={className}
+    />
   );
 });

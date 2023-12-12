@@ -45,7 +45,6 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
           },
         }),
       ).unwrap();
-      console.log(value);
       setIsLoading(false);
       forceUpdate();
     }

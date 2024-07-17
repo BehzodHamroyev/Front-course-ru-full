@@ -19,7 +19,7 @@ import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { Button } from '@/shared/ui/redesigned/Button';
 
 interface NavbarProps {
-    className?: string;
+  className?: string;
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
@@ -44,65 +44,65 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   if (authData) {
     return (
         <ToggleFeatures
-                // eslint-disable-next-line i18next/no-literal-string
-                feature="isAppRedesigned"
-                on={(
-                    <header className={classNames(mainClass, {}, [className])}>
-                        <HStack gap="16" className={cls.actions}>
-                            <NotificationButton />
-                            <AvatarDropdown />
-                        </HStack>
-                    </header>
-                  )}
-                off={(
-                    <header className={classNames(mainClass, {}, [className])}>
-                        <Text
-                            className={cls.appName}
-                            title={t('HBP')}
-                            theme={TextTheme.INVERTED}
-                        />
-                        <AppLink
-                            to={getRouteArticleCreate()}
-                            theme={AppLinkTheme.SECONDARY}
-                            className={cls.createBtn}
-                        >
-                            {t('Создать статью')}
-                        </AppLink>
-                        <HStack gap="16" className={cls.actions}>
-                            <NotificationButton />
-                            <AvatarDropdown />
-                        </HStack>
-                    </header>
-                  )}
+        // eslint-disable-next-line i18next/no-literal-string
+        feature="isAppRedesigned"
+        on={(
+            <header className={classNames(mainClass, {}, [className])}>
+                <HStack gap="16" className={cls.actions}>
+                    <NotificationButton />
+                    <AvatarDropdown />
+                </HStack>
+            </header>
+        )}
+        off={(
+            <header className={classNames(mainClass, {}, [className])}>
+                <Text
+              className={cls.appName}
+              title={t('HBP')}
+              theme={TextTheme.INVERTED}
             />
+                <AppLink
+              to={getRouteArticleCreate()}
+              theme={AppLinkTheme.SECONDARY}
+              className={cls.createBtn}
+            >
+                    {t('Создать статью')}
+                </AppLink>
+                <HStack gap="16" className={cls.actions}>
+                    <NotificationButton />
+                    <AvatarDropdown />
+                </HStack>
+            </header>
+        )}
+      />
     );
   }
 
   return (
       <header className={classNames(mainClass, {}, [className])}>
           <ToggleFeatures
-                // eslint-disable-next-line i18next/no-literal-string
-                feature="isAppRedesigned"
-                on={(
-                    <Button
-                        // eslint-disable-next-line i18next/no-literal-string
-                        variant="clear"
-                        className={cls.links}
-                        onClick={onShowModal}
-                    >
-                        {t('Войти')}
-                    </Button>
-                  )}
-                off={(
-                    <ButtonDeprecated
-                        theme={ButtonTheme.CLEAR_INVERTED}
-                        className={cls.links}
-                        onClick={onShowModal}
-                    >
-                        {t('Войти')}
-                    </ButtonDeprecated>
-                  )}
-            />
+        // eslint-disable-next-line i18next/no-literal-string
+        feature="isAppRedesigned"
+        on={(
+            <Button
+            // eslint-disable-next-line i18next/no-literal-string
+            variant="clear"
+            className={cls.links}
+            onClick={onShowModal}
+          >
+                {t('Войти')}
+            </Button>
+        )}
+        off={(
+            <ButtonDeprecated
+            theme={ButtonTheme.CLEAR_INVERTED}
+            className={cls.links}
+            onClick={onShowModal}
+          >
+                {t('Войти')}
+            </ButtonDeprecated>
+        )}
+      />
 
           {isAuthModal && (
           <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />

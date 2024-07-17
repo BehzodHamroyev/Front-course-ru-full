@@ -20,7 +20,7 @@ import { Dropdown } from '@/shared/ui/redesigned/Popups';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
 
 interface AvatarDropdownProps {
-    className?: string;
+  className?: string;
 }
 
 export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
@@ -66,29 +66,29 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
 
   return (
       <ToggleFeatures
-            feature="isAppRedesigned"
-            on={(
-                <Dropdown
-                    direction="bottom left"
-                    className={classNames('', {}, [className])}
-                    items={items}
-                    trigger={<Avatar size={40} src={authData.avatar} />}
-                />
-              )}
-            off={(
-                <DropdownDeprecated
-                    direction="bottom left"
-                    className={classNames('', {}, [className])}
-                    items={items}
-                    trigger={(
-                        <AvatarDeprecated
-                            fallbackInverted
-                            size={30}
-                            src={authData.avatar}
-                        />
-                      )}
-                />
-              )}
+      feature="isAppRedesigned"
+      on={(
+          <Dropdown
+          direction="bottom left"
+          className={classNames('', {}, [className])}
+          items={items}
+          trigger={<Avatar size={40} src={authData.avatar} />}
         />
+      )}
+      off={(
+          <DropdownDeprecated
+          direction="bottom left"
+          className={classNames('', {}, [className])}
+          items={items}
+          trigger={(
+              <AvatarDeprecated
+              fallbackInverted
+              size={30}
+              src={authData.avatar}
+            />
+          )}
+        />
+      )}
+    />
   );
 });
